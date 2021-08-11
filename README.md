@@ -88,4 +88,23 @@ When given the start only, calculate TMIN, TAVG, and TMAX for all dates greater 
 
 When given the start and the end date, calculate the TMIN, TAVG, and TMAX for dates between the start and end date inclusive.
 
-Hints
+Bonus: Other Recommended Analyses
+The following are optional challenge queries. These are highly recommended to attempt, but not required for the homework.
+
+Use the provided temp_analysis_bonus_1_starter.ipynb and temp_analysis_bonus_1_starter starter notebooks for each bonus challenge.
+
+Temperature Analysis I  BONUS
+Hawaii is reputed to enjoy mild weather all year. Is there a meaningful difference between the temperature in, for example, June and December?
+
+Use pandas to perform this portion.
+
+Convert the date column format from string to datetime.
+
+Set the date column as the DataFrame index
+
+Drop the date column
+
+Identify the average temperature in June at all stations across all available years in the dataset. Do the same for December temperature.
+
+Use the t-test to determine whether the difference in the means, if any, is statistically significant. Will you use a paired t-test, or an unpaired t-test? Why?  
+
