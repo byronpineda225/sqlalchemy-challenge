@@ -159,6 +159,12 @@ def start_temp_range(start):
     # Create our session(link) from Python to the DB
     session = Session(engine)
     
+    try:
+        dt_obj = dt.datetime.strptime(start, "%Y-%m-%d")
+        dt_str = dt.datetime.strftime(dt_obj, '%Y-%m-%d')
+    except ValueError: 
+        return jsonify(f"The wrong date format {start} was entered")
+    
     """Return TMIN, TAVG, and TMAX for all dates greater than and equal to the start date."""
     # Query the min, avg, max of the temperatures for the given start date
     results = session.query(Measurement.date, func.min(Measurement.tobs), \
@@ -185,6 +191,19 @@ def start_temp_range(start):
 def start_end_range(start,end):
     # Create our session(link) from Python to the DB
     session = Session(engine)
+
+    try:
+        dt_obj1 = dt.datetime.strptime(start, "%Y-%m-%d")
+        dt_str1 = dt.datetime.strftime(dt_obj1, '%Y-%m-%d')
+    except ValueError: 
+        return jsonify(f"The wrong start date format {start} was entered")
+
+    try:
+        dt_obj2 = dt.datetime.strptime(end, "%Y-%m-%d")
+        dt_str2 = dt.datetime.strftime(dt_obj2, '%Y-%m-%d')
+    except ValueError: 
+        return jsonify(f"The wrong end date format {end} was entered")    
+
     """Return TMIN, TAVG, and TMAX for dates between the start and end date inclusive."""
 
     # Query the min, avg, max for dates between the start and end date inclusive
